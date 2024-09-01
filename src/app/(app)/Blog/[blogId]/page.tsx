@@ -3,10 +3,16 @@ import Image from 'next/image'
 import React from 'react'
 import im1 from '@/../public/blogs_image/img1.jpg'
 import im2 from '@/../public/blogs_image/img2.jpg'
+import MyBreadcrumb from '@/components/MyBreadcrumb'
 const Page = () => {
     return (
         <div className='mt-8 w-[80%] mx-auto'>
             {/* this is category of my blog  */}
+            <MyBreadcrumb
+                home="Home"
+                components="FindBlogs"
+                breadcrumbed="React vs NextJS: An Overview"
+            />
             <div className="badge badge-primary mb-8">Technology</div>
             {/* heading */}
             <h2 className='text-3xl font-bold font-sans mb-2'>Reactjs vs NextJS: A overview</h2>
@@ -72,7 +78,7 @@ const Page = () => {
 
                 Feel free to adjust the content to better fit your blog's style or to include additional details relevant to your audience!
             </div>
-        </div>
+        </div >
     )
 }
 

@@ -3,18 +3,21 @@ import Link from 'next/link'
 import React, { useState } from 'react'
 import { signOut } from 'next-auth/react';
 import Toast from './Toast';
+import { useToast } from '@/hooks/use-toast';
 
 const Navbar = () => {
-    const [showToast, setShowToast] = useState(false);
-    const [message, setMessage] = useState('')
+    const { toast } = useToast();
     const handleLogout = async () => {
-        setShowToast(true);
-        setMessage('Logging you out, please wait!!!')
+
+        toast({
+            title: 'Logout',
+            description: `Logging out, please wait....`,
+            variant: "default"
+        })
         await signOut({ callbackUrl: '/Auth/signIn' }); // Redirects to the login page after logout
     };
     return (
         <div className="navbar bg-base-100">
-            <Toast show={showToast} message={message} title='LogOut' onClose={() => setShowToast(false)} variant='success' />
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
@@ -38,6 +41,7 @@ const Navbar = () => {
                         <li><Link href={'/User/jfjd'}>My Blogs</Link></li>
                         <li><Link href={'/CreateBlog'}>Create Blog</Link></li>
                         <li><Link href={'/User/snjs'}>Find a creator</Link></li>
+                        <li><Link href={'/Subscriptions'}>Subscription</Link></li>
                         <li><button onClick={handleLogout}>Logout</button></li>
                     </ul>
                 </div>
