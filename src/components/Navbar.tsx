@@ -4,8 +4,13 @@ import React, { useState } from 'react'
 import { signOut } from 'next-auth/react';
 import Toast from './Toast';
 import { useToast } from '@/hooks/use-toast';
+import { useRouter } from 'next/navigation';
 
 const Navbar = () => {
+    const [loading, setloading] = useState(false)
+    const token = localStorage.getItem("token");
+    const router = useRouter();
+    console.log('token is ', token);
     const { toast } = useToast();
     const handleLogout = async () => {
 
@@ -16,9 +21,21 @@ const Navbar = () => {
         })
         await signOut({ callbackUrl: '/Auth/signIn' }); // Redirects to the login page after logout
     };
+    const handlegetstarted = async () => {
+        setloading(true)
+        setInterval(() => {
+            toast({
+                title: 'Please wait',
+                description: `Please wait .....`,
+                variant: "default"
+            })
+            router.push('/Auth/signUp')
+        }, 500);
+        setloading(false)
+    };
     return (
         <div className="navbar bg-base-100">
-            <div className="navbar-start">
+            {token && (<div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
                         <svg
@@ -34,6 +51,7 @@ const Navbar = () => {
                                 d="M4 6h16M4 12h16M4 18h7" />
                         </svg>
                     </div>
+
                     <ul
                         tabIndex={0}
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
@@ -46,6 +64,10 @@ const Navbar = () => {
                     </ul>
                 </div>
             </div>
+            )}
+            {!token && (<div className='navbar-start'>
+                <button className="btn" onClick={handlegetstarted}>{loading ? "Please wait....." : "Get started"}</button>
+            </div>)}
             <div className="navbar-center">
                 <Link href={'/'} className="font-bold text-xl">DevDigest</Link>
             </div>

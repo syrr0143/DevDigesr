@@ -1,4 +1,5 @@
-import React from 'react'
+"use client"
+import React, { useState } from 'react'
 import img1 from '../../../public/landing_page/1.webp'
 import img2 from '../../../public/landing_page/2.webp'
 import img3 from '../../../public/landing_page/3.webp'
@@ -13,14 +14,37 @@ import img11 from '../../../public/landing_page/11.webp'
 import img12 from '../../../public/landing_page/12.webp'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import { toast } from '@/hooks/use-toast'
 const Page = () => {
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
+  const handlegetstarted = (e: any) => {
+    console.log(loading)
+    setLoading(true);
+    console.log(loading)
+
+    try {
+      router.push('/Auth/signIn')
+
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: 'Error',
+        description: (error as Error).message,
+      })
+      setLoading(false)
+
+    }
+
+  }
   return (
     <div>
       <div className='bg-primary rounded-3xl h-[100vh] justify-center items-center flex'>
         <div className='w-[50%] text-center text-white'>
           <h2 className='text-6xl font-extrabold '>Create a blog worth sharing</h2>
           <p className='mt-4'> In the fast-paced world of technology, staying updated is crucial. With Dev Digest, you’ll have access to the latest trends, tools, and techniques directly from industry experts. Whether you're a seasoned developer or just starting, you'll always be one step ahead.</p>
-          <button className="btn mt-8">Get started</button>
+          <button className="btn mt-8" onClick={handlegetstarted}>{loading ? "Please wait....." : "Get started"}</button>
           <button className="btn mt-8 ml-8"><Link href={'ViewBlogs'}>Read Some Blogs</Link></button>
           <p className='mt-8'>Not just about consuming content—it's about creating it.</p>
         </div>
@@ -142,7 +166,7 @@ const Page = () => {
             </div>
 
           </div>
-          <button className='btn bg-black text-white hover:btn-ghost hover:text-black mt-16'>Start Blogging</button>
+          <button className='btn bg-black text-white hover:btn-ghost hover:text-black mt-16' onClick={handlegetstarted}>{loading ? "Please wait...." : "Start Blogging"}</button>
         </div>
 
       </div>
@@ -155,7 +179,7 @@ const Page = () => {
               <h2 className='text-xl font-bold mb-4'>
                 How to create a blog for free</h2>
               <p>Follow these 5 steps to start building your blog today.</p>
-              <button className='btn bg-black text-white hover:btn-ghost hover:text-black mt-16'>Start Blogging</button>
+              <button className='btn bg-black text-white hover:btn-ghost hover:text-black mt-16' onClick={handlegetstarted}>{loading ? "Please wait...." : "Start Blogging"}</button>
 
             </div>
             <div className="w-full sm:w-1/2 lg:w-2/3 px-4 mb-8">
@@ -197,7 +221,7 @@ const Page = () => {
         <div className='w-[50%] text-center text-black'>
           <h2 className='text-6xl font-extrabold '>Create a blog that inspires.</h2>
 
-          <button className="btn mt-8">Get started</button>
+          <button className="btn mt-8" onClick={handlegetstarted}>{loading ? "Please wait...." : "Get started"}</button>
         </div>
       </div>
     </div>

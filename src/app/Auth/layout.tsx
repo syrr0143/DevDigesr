@@ -1,4 +1,5 @@
 import '../globals.css';
+import { Toaster } from "@/components/ui/toaster"
 
 const metadata = {
     title: 'Next.js',
@@ -14,6 +15,7 @@ export default function RootLayout({
         <div className='html4' >
             <div>
                 {children}
+                <Toaster />
             </div>
         </div>
     )
