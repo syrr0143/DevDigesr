@@ -1,19 +1,14 @@
 import Post from "@/Models/Post";
 import { NextRequest, NextResponse } from "next/server";
-
+import { verifyToken } from "@/lib/tokenHandler";
 export async function GET(request: NextRequest, { params }: { params: { postid: string } }) {
+    const { decoded, error } = verifyToken(request) as any;
+     if (error) {
+        return error;
+    }
     const { postid } = params;
     try {
-        const token = request.cookies.get("token");
-        if (!token) {
-            return NextResponse.json({
-                message: "Unauthorised access ,no token found",
-                success: false
-            }, {
-                status: 401
-            })
-
-        }
+       
         const post = await Post.findById({ _id: postid });
         if (!post) {
             return NextResponse.json({

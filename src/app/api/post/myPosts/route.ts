@@ -1,28 +1,15 @@
 import Post from "@/Models/Post";
 import jwt from "jsonwebtoken";
 import { NextRequest, NextResponse } from "next/server";
-
+import { verifyToken } from "@/lib/tokenHandler";
 export async function GET(request: NextRequest) {
     try {
-        const token = await request.cookies.get("token")?.value;
-        if (!token) {
-            return NextResponse.json({
-                message: "Unauthorised access ,no token found",
-                success: false
-            }, {
-                status: 401
-            })
-
+       
+        const { decoded, error } = verifyToken(request) as any;
+        if( error){
+            return error;
         }
-        const _id = jwt.verify(token, process.env.TOKEN_SECRET!);
-        if (!_id) {
-            return NextResponse.json({
-                message: "Invalid token",
-                success: false
-            }, {
-                status: 403
-            })
-        }
+        const _id = decoded._id;
         const posts = await Post.find({ userid: _id });
         if (!posts || posts.length === 0) {
             return NextResponse.json({

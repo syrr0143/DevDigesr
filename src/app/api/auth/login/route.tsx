@@ -2,7 +2,6 @@ import User from "@/Models/User";
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
-import { UserPlusIcon } from "@heroicons/react/24/outline";
 import dbConnect from "@/lib/dbConnect";
 dbConnect();
 export async function POST(request: NextRequest) {

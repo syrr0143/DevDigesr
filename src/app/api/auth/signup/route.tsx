@@ -1,6 +1,8 @@
 import User from "@/Models/User";
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from 'bcrypt'
+import dbConnect from "@/lib/dbConnect";
+dbConnect();
 export async function POST(request: NextRequest) {
     const { username, email, password } = await request.json();
 
@@ -29,7 +31,7 @@ export async function POST(request: NextRequest) {
         })
         const saveduser = await newuser.save();
 
-
+        
         return NextResponse.json({
             message: "User created successfully",
             success: true,

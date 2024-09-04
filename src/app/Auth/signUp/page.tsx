@@ -9,14 +9,7 @@ const Page = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
-    const showtoast = () => {
-        toast({
-            title: "Success",
-            style: { background: "bg-green-400 ", color: "text-white" },
 
-            description: "User signup success"
-        })
-    }
     const handleSignup = async () => {
 
 
@@ -25,12 +18,13 @@ const Page = () => {
                 title: "Fields required",
                 variant: "default",
                 description: "Please fill all fields"
-            })
-
+            });
+            return;  // Prevent further execution
         }
+
         setLoading(true);
         try {
-            const response = await axios.post('/api/signup', {
+            const response = await axios.post('/api/auth/signup', {
                 username: username, email: email, password: password
             });
             console.log('response code', response.status, (response.status === 403))
@@ -42,6 +36,9 @@ const Page = () => {
                     description: "User with same email already exists"
                 })
             }
+            setUsername("");
+            setEmail('');
+            setPassword("");
             toast({
                 title: "Success",
                 style: { background: "bg-green-400 ", color: "text-white" },
@@ -54,15 +51,16 @@ const Page = () => {
             toast({
                 title: "Failed to signup",
                 variant: "default",
-                description: error.response.data.message,
-            })
+                description: error.response?.data?.message || "An unexpected error occurred.",
+            });
+
         } finally {
             setLoading(false);
         }
     }
     return (
         <div>
-            <button onClick={showtoast}>show</button>
+
 
             <div className="card bg-base-100 w-[50%] shadow-2xl mx-auto mt-8">
                 <div className="card-body">
