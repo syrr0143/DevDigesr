@@ -4,6 +4,108 @@ import Link from 'next/link'
 import React from 'react'
 
 const Page = () => {
+     const posts = [
+       {
+         title: "React vs Next: Which One to Prefer?",
+         avatar: "https://i.pravatar.cc/150?img=1",
+         category: "technology",
+         content:
+           "We are getting newer frameworks. But the most used of them are React and Next...",
+         author: "Alexander Thomas",
+         date: "August 20, 2024",
+         imageUrl: "https://picsum.photos/id/1/400/300?grayscale",
+       },
+       {
+         title: "The Future of Web Development with AI",
+         avatar: "https://i.pravatar.cc/150?img=2",
+         category: "Development",
+         content:
+           "Artificial intelligence is revolutionizing the way we build websites and applications...",
+         author: "Sarah Johnson",
+         date: "August 18, 2024",
+         imageUrl: "https://picsum.photos/id/2/400/300?grayscale",
+       },
+       {
+         title: "Understanding TypeScript: A Beginner’s Guide",
+         avatar: "https://i.pravatar.cc/150?img=3",
+         category: "React",
+         content:
+           "TypeScript is becoming essential for modern web applications. Learn why and how to start...",
+         author: "David Smith",
+         date: "August 10, 2024",
+         imageUrl: "https://picsum.photos/id/3/400/300?grayscale",
+       },
+       {
+         title: "Tailwind CSS: A Complete Guide",
+         avatar: "https://i.pravatar.cc/150?img=4",
+         category: "Next",
+         content:
+           "Tailwind CSS has taken the design world by storm. Here's a complete guide to getting started...",
+         author: "Olivia Martin",
+         date: "August 5, 2024",
+         imageUrl: "https://picsum.photos/id/4/400/300?grayscale",
+       },
+       {
+         title: "Exploring the Benefits of Serverless Architecture",
+         avatar: "https://i.pravatar.cc/150?img=5",
+         category: "technology",
+         content:
+           "Serverless architecture has become a buzzword in tech. But what are its real benefits?",
+         author: "Michael Clark",
+         date: "July 25, 2024",
+         imageUrl: "https://picsum.photos/id/5/400/300?grayscale",
+       },
+       {
+         title: "Top JavaScript Frameworks to Learn in 2024",
+         avatar: "https://i.pravatar.cc/150?img=6",
+         category: "React",
+         content:
+           "From React to Vue.js, explore the top JavaScript frameworks that you should learn this year...",
+         author: "Emily Wilson",
+         date: "July 20, 2024",
+         imageUrl: "https://picsum.photos/id/6/400/300?grayscale",
+       },
+       {
+         title: "How to Build Scalable Web Apps with Next.js",
+         avatar: "https://i.pravatar.cc/150?img=7",
+         category: "technology",
+         content:
+           "Next.js offers a powerful framework to build scalable, performant web apps. Here's how...",
+         author: "Chris Evans",
+         date: "July 18, 2024",
+         imageUrl: "https://picsum.photos/id/7/400/300?grayscale",
+       },
+       {
+         title: "Demystifying APIs: A Guide for Beginners",
+         avatar: "https://i.pravatar.cc/150?img=8",
+         category: "Android Development",
+         content:
+           "APIs power modern applications, but what exactly are they? This beginner's guide explains...",
+         author: "Amanda Turner",
+         date: "July 15, 2024",
+         imageUrl: "https://picsum.photos/id/8/400/300?grayscale",
+       },
+       {
+         title: "Building Modern Web Apps with GraphQL",
+         avatar: "https://i.pravatar.cc/150?img=9",
+         category: "Web Development",
+         content:
+           "GraphQL is transforming the way data is fetched in web apps. Learn how to get started...",
+         author: "Robert Brown",
+         date: "July 10, 2024",
+         imageUrl: "https://picsum.photos/id/9/400/300?grayscale",
+       },
+       {
+         title: "The Role of Cloud Computing in Future Tech",
+         avatar: "https://i.pravatar.cc/150?img=10",
+         category: "technology",
+         content:
+           "Cloud computing continues to evolve, playing a crucial role in the future of technology...",
+         author: "Sophia Green",
+         date: "July 5, 2024",
+         imageUrl: "https://picsum.photos/id/10/400/300?grayscale",
+       },
+     ];
     return (
         <div className='user_details'>
             <div className="hero bg-base-200 min-h-fit rounded-xl">
@@ -16,7 +118,7 @@ const Page = () => {
                         height={200} // Adjust the height according to your design
                     />
                     <div>
-                        <h1 className="text-5xl font-bold mb-2">User name</h1>
+                        <h1 className="text-5xl font-bold mb-2">Sumit yadav</h1>
                         <p className="text-xs opacity-50  font-bold">since 22 aug 2000</p>
                         <p className="text-xs opacity-50 font-bold">21 Blogs</p>
                         <p className="py-6">
@@ -69,33 +171,20 @@ const Page = () => {
                     Latest Post
                 </h2>
                 <div className="flex flex-wrap ">
-                    <div className="w-full sm:w-1/2 lg:w-1/3 px-4 mb-8">
-                        <Post />
-                    </div>
-                    <div className="w-full sm:w-1/2 lg:w-1/3 px-4 mb-8">
-                        <Post />
-                    </div>
-                    <div className="w-full sm:w-1/2 lg:w-1/3 px-4 mb-8">
-                        <Post />
-                    </div>
-                    <div className="w-full sm:w-1/2 lg:w-1/3 px-4 mb-8">
-                        <Post />
-                    </div>
-                    <div className="w-full sm:w-1/2 lg:w-1/3 px-4 mb-8">
-                        <Post />
-                    </div>
-                    <div className="w-full sm:w-1/2 lg:w-1/3 px-4 mb-8">
-                        <Post />
-                    </div>
-                    <div className="w-full sm:w-1/2 lg:w-1/3 px-4 mb-8">
-                        <Post />
-                    </div>
-                    <div className="w-full sm:w-1/2 lg:w-1/3 px-4 mb-8">
-                        <Post />
-                    </div>
-                    <div className="w-full sm:w-1/2 lg:w-1/3 px-4 mb-8">
-                        <Post />
-                    </div>
+                    {posts.map((post, index) => 
+                        <div key={index} className="w-full sm:w-1/2 lg:w-1/3 px-4 mb-8">
+                            <Post
+                title={post.title}
+                content={post.content}
+                author={post.author}
+                date={post.date}
+                imageUrl={post.imageUrl}
+                      category={post.category}
+                      avatar={post.avatar}
+              />
+                        </div>
+                    )}
+                   
                 </div>
 
 
