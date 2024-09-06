@@ -1,4 +1,5 @@
 "use client"
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import React from 'react'
 
@@ -19,7 +20,7 @@ const Post = ({
     <>
       <div className="card bg-base-100  shadow-xl" onClick={handleClick}>
         <figure>
-          <img src={imageUrl} alt="Shoes" />
+          <Image src={imageUrl} alt="Shoes" />
         </figure>
         <div className="card-body">
           <div className="badge badge-primary">{category}</div>
@@ -27,7 +28,7 @@ const Post = ({
           <p>{content}</p>
           <div className="avatar items-center">
             <div className="w-8 rounded mr-2">
-              <img src={avatar} alt="Tailwind-CSS-Avatar-component" />
+              <Image src={avatar} alt="Tailwind-CSS-Avatar-component" />
             </div>
             <p className="text-xs opacity-50">
               {author}

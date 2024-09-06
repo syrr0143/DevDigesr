@@ -1,5 +1,6 @@
 import hero from "../../public/hero.png";
 import Post from "../../../components/Post";
+import Image from "next/image";
 export default function Home() {
   const posts = [
     {
@@ -118,12 +119,12 @@ export default function Home() {
             <h1 className="mb-5 text-5xl font-bold">Welcome to Dev Digest</h1>
 
             <p className="mb-5">
-              " Insights, Tutorials, and the Latest in Development Trends
-              Delivered Straight to You."
+              &quot;Insights, Tutorials, and the Latest in Development Trends
+              Delivered Straight to You.&quot;
             </p>
             <p className="mb-5">
-              "Share Your Knowledge, Discover Fresh Insights, and Connect with
-              Fellow Developers. Sign Up and Start Posting Today!"
+              &quot;Share Your Knowledge, Discover Fresh Insights, and Connect
+              with Fellow Developers. Sign Up and Start Posting Today!&quot;
             </p>
             <button className="btn btn-primary">Get Started</button>
           </div>
@@ -142,7 +143,7 @@ export default function Home() {
             <div className="card-actions justify-end"></div>
             <div className="avatar items-center">
               <div className="w-8 rounded mr-2">
-                <img
+                <Image
                   src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
                   alt="Tailwind-CSS-Avatar-component"
                 />
@@ -167,8 +168,8 @@ export default function Home() {
                 author={post.author}
                 date={post.date}
                 imageUrl={post.imageUrl}
-                      category={post.category}
-                      avatar={post.avatar}
+                category={post.category}
+                avatar={post.avatar}
               />
             </div>
           ))}
